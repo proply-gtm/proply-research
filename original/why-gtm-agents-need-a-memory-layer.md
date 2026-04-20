@@ -66,20 +66,6 @@ The deeper history — full meeting transcripts, complete email threads, all 60 
 
 ---
 
-## Why CRM Doesn't Solve This
-
-The instinctive response is: "we already have HubSpot, why do we need another system?"
-
-HubSpot was designed for a human opening a browser tab before a call — to quickly scan a contact record and remember who they're talking to. The interface, the data model, the update workflow — all of it is optimized for human eyes making sense of structured information.
-
-An AI agent doesn't open browser tabs. It makes API calls. It needs data returned in a structure it can reason over directly, not in a format designed for human scanning. It needs that data to reflect reality right now — not what a human last updated three weeks ago, not what the last sync captured, but what the most recent signal says.
-
-More fundamentally: CRM records are updated by humans. They're as accurate as the last time someone logged in and typed something. GTM agents are acting on behalf of humans who aren't logging updates — they're operating autonomously, which means the memory layer has to update itself from signals, not from human input.
-
-This is the architectural difference. A CRM is a human-maintained record store with a UI. A GTM memory layer is a signal-driven, automatically updated, agent-queryable state machine. The data inside might look similar. The update model, the query interface, and the consumer are entirely different.
-
----
-
 ## How Much Memory Is Enough — And Why Not More
 
 The temptation when building a memory layer is to store everything and let the agent decide what's relevant. This is the wrong instinct, and the research explains why.
