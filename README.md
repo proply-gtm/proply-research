@@ -28,8 +28,17 @@ Concise breakdowns of research we found most relevant, written in the context of
 | [Graphiti: Temporal Knowledge Graphs](./papers/graphiti-temporal-knowledge-graphs.md) — Zep | Don't overwrite facts — invalidate them. The bi-temporal pattern and what it means for GTM agent memory |
 | [Entity Resolution for Big Data](./papers/entity-resolution-big-data.md) — Academic Survey | The four-stage ER pipeline: blocking → matching → clustering. Why identity resolution is hard at scale and how to think about it |
 | [Dedupe: Practical Entity Resolution](./papers/dedupe-practical-entity-resolution.md) — dedupeio | Active learning cuts labeling from thousands of examples to dozens. What production ER looks like in code |
+| [LightRAG: Graph-Enhanced Retrieval](./papers/lightrag-graph-enhanced-retrieval.md) — HKUDS / EMNLP 2025 | Dual-level retrieval: low-level for specific facts, high-level for themes. 6,000x cheaper than GraphRAG at query time |
 
 We'll keep adding papers as we find ones that shape how we think.
+
+**Original Writing** — [`/original`](./original/)
+
+Frameworks and synthesis we've developed ourselves, drawing across the research:
+
+| Piece | What it covers |
+|---|---|
+| [Entity Resolution in Real-Time GTM Data Streams](./original/entity-resolution-real-time-gtm-streams.md) | The tiered waterfall approach, hard cases (abbreviations, nicknames, disambiguation), conflict resolution policy, and why top-down ER is right for GTM |
 
 **Implementation Notes**
 Architecture sketches, design decisions, and lessons from building the actual system — what we tried, why it worked or didn't, and what we'd do differently.
