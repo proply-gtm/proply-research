@@ -26,6 +26,8 @@ Concise breakdowns of research we found most relevant, written in the context of
 |---|---|
 | [Context Rot](./papers/context-rot.md) — Chroma Research | Long context ≠ solved memory. Every model degrades as tokens increase — and this is why structured, pre-computed memory exists |
 | [Graphiti: Temporal Knowledge Graphs](./papers/graphiti-temporal-knowledge-graphs.md) — Zep | Don't overwrite facts — invalidate them. The bi-temporal pattern and what it means for GTM agent memory |
+| [Entity Resolution for Big Data](./papers/entity-resolution-big-data.md) — Academic Survey | The four-stage ER pipeline: blocking → matching → clustering. Why identity resolution is hard at scale and how to think about it |
+| [Dedupe: Practical Entity Resolution](./papers/dedupe-practical-entity-resolution.md) — dedupeio | Active learning cuts labeling from thousands of examples to dozens. What production ER looks like in code |
 
 We'll keep adding papers as we find ones that shape how we think.
 

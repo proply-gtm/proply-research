@@ -109,7 +109,40 @@ The pattern is identical to what Proply is building: open the engine and the sch
 
 ---
 
-## 7. Two Approaches to Agent Memory: Graph vs. Signal Ledger
+## 7. How Graphiti Handles Entity Resolution
+
+This was missing from our original write-up — and it's important because entity resolution is where the top-down vs. bottom-up difference becomes concrete.
+
+**How it works:** When a new episode arrives, Graphiti uses the LLM to extract entity mentions from the raw text. It then compares those extracted entity strings against existing nodes in the graph using a combination of name matching and embedding similarity. If the similarity is high enough, it merges the new mention into the existing node rather than creating a new one.
+
+**The key insight — resolution happens at ingestion, not at query time.** Unlike RAG systems that figure out entity relationships when the agent asks a question, Graphiti resolves entities as data arrives. By query time, the graph is already structured.
+
+**Where it works well:** Clear, unambiguous entity names in well-structured text. `"John Smith, CEO of Acme Corp"` arriving in two different episodes reliably resolves to one node.
+
+**Where it breaks down:** The LLM-based approach struggles with the same hard cases as any ER system:
+- Abbreviations vs. full names: `IBM` vs. `International Business Machines` may create two nodes
+- Nicknames: `Ben` vs. `Bennet` — no guarantee of merge
+- Contextual disambiguation: `Apple` in a food context vs. tech context — depends entirely on what the LLM infers from surrounding text
+- Scale: resolution quality degrades as the entity vocabulary grows more ambiguous
+
+**Top-down mode (custom types):** When you define custom entity types via Pydantic models, Graphiti becomes partially top-down — you're telling it "always extract `Person` and `Company` entities with these specific fields." This tightens resolution because the schema constrains what the LLM extracts. But even in this mode, the actual matching (is this `Person` the same as that `Person`?) still relies on LLM judgment.
+
+**The fundamental tradeoff vs. Proply's approach:**
+
+| | Graphiti (LLM-based ER) | Proply (waterfall ER) |
+|---|---|---|
+| **Inputs handled** | Unstructured text, any format | Structured webhook payloads |
+| **Resolution method** | LLM name match + embedding similarity | External ID → email → LinkedIn (exact) |
+| **Hard case handling** | LLM attempts semantic resolution | Falls back to create (misses fuzzy matches) |
+| **Speed** | Slower — LLM call per ingestion | Fast — deterministic lookup |
+| **Consistency** | Variable — depends on LLM | High — same input always same output |
+| **Training required** | None — zero-shot | None — rule-based |
+
+Neither is universally better. Graphiti's approach is the right choice when you're ingesting unstructured text from diverse sources and can't predict what entities will look like. Proply's approach is right when you're ingesting structured signals from known platforms where the fields are well-defined and exact matching covers 95%+ of cases.
+
+---
+
+## 9. Two Approaches to Agent Memory: Graph vs. Signal Ledger
 
 Graphiti and Proply solve the same underlying problem — persistent memory for AI agents — through different architectural choices. Neither is universally superior; they're optimized for different use cases.
 
@@ -130,7 +163,7 @@ For domains where you don't know the structure in advance, Graphiti's approach i
 
 ---
 
-## 8. What We're Taking From This
+## 10. What We're Taking From This
 
 **Bi-temporal tracking is the right pattern.** Graphiti's separation of "when something was true" vs. "when we learned about it" is exactly what Proply's `occurred_at` vs. `received_at` fields implement. This isn't an accident — it's the correct model for any system that ingests data from external platforms with their own clocks. We should document this explicitly in our architecture.
 
@@ -144,7 +177,7 @@ For domains where you don't know the structure in advance, Graphiti's approach i
 
 ---
 
-## 9. What Graphiti Doesn't Do (That We Need)
+## 11. What Graphiti Doesn't Do (That We Need)
 
 Graphiti is general-purpose by design. For GTM-specific memory, several things need to be added on top:
 
