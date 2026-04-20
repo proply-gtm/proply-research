@@ -24,6 +24,8 @@ Concise breakdowns of research we found most relevant, written in the context of
 
 | Paper | Our Take |
 |---|---|
+| [MemGPT: LLMs as Operating Systems](./papers/memgpt-llms-as-operating-systems.md) — UC Berkeley | The foundational paper. Context window = RAM, external storage = disk. The right mental model for all agent memory work |
+| [Reflexion: Verbal Reinforcement Learning](./papers/reflexion-verbal-reinforcement-learning.md) — NeurIPS 2023 | Agents learn from outcomes through language, not weight updates. 91% on HumanEval. The mechanism behind workspace-level GTM learning |
 | [Context Rot](./papers/context-rot.md) — Chroma Research | Long context ≠ solved memory. Every model degrades as tokens increase — and this is why structured, pre-computed memory exists |
 | [Graphiti: Temporal Knowledge Graphs](./papers/graphiti-temporal-knowledge-graphs.md) — Zep | Don't overwrite facts — invalidate them. The bi-temporal pattern and what it means for GTM agent memory |
 | [Entity Resolution for Big Data](./papers/entity-resolution-big-data.md) — Academic Survey | The four-stage ER pipeline: blocking → matching → clustering. Why identity resolution is hard at scale and how to think about it |
@@ -38,6 +40,7 @@ Frameworks and synthesis we've developed ourselves, drawing across the research:
 
 | Piece | What it covers |
 |---|---|
+| [Why GTM Agents Need a Memory Layer](./original/why-gtm-agents-need-a-memory-layer.md) | How agents currently operate without memory and why both common approaches fail. The minimum viable memory block, five design principles, and the three-layer architecture |
 | [Entity Resolution in Real-Time GTM Data Streams](./original/entity-resolution-real-time-gtm-streams.md) | The tiered waterfall approach, hard cases (abbreviations, nicknames, disambiguation), conflict resolution policy, and why top-down ER is right for GTM |
 
 **Implementation Notes**
