@@ -70,7 +70,7 @@ For a reference implementation of the core pattern running on SQLite, see [propl
 ## Stay Updated
 
 - Product: [goproply.com](https://goproply.com)
-- LinkedIn: [linkedin.com/in/bennetglinder](https://linkedin.com/in/bennetglinder)
+- LinkedIn: [linkedin.com/in/documentbennet](https://linkedin.com/in/documentbennet)
 
 ---
 
