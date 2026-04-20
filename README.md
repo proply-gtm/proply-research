@@ -25,6 +25,7 @@ Concise breakdowns of research we found most relevant, written in the context of
 | Paper | Our Take |
 |---|---|
 | [Context Rot](./papers/context-rot.md) — Chroma Research | Long context ≠ solved memory. Every model degrades as tokens increase — and this is why structured, pre-computed memory exists |
+| [Graphiti: Temporal Knowledge Graphs](./papers/graphiti-temporal-knowledge-graphs.md) — Zep | Don't overwrite facts — invalidate them. The bi-temporal pattern and what it means for GTM agent memory |
 
 We'll keep adding papers as we find ones that shape how we think.
 
